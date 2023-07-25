@@ -1,20 +1,15 @@
 NAME = libftprintf.a
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror -c -o
-SRC = ft_printf.c 
-SRC_BONUS = 
+SRC = ft_printf.c ft_pointerhex.c ft_hexlower.c ft_itoa.c ft_itoaun.c ft_putchar_fd.c
 	
 OBJS = $(SRC:.c=.o) 
-OBJS_BONUS =  $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
-	
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rc $(NAME) $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) $@ $<
