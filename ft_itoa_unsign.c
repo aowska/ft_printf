@@ -12,36 +12,35 @@
 
 #include "ft_printf.h"
 
-char	*ft_toaun(size_t i,  unsigned int n1, unsigned int n, char *str)
+void	ft_to_itoa_unsign(size_t i,  unsigned int n1, unsigned int n, char **str)
 {
 	while (i--)
 	{
-		str[i] = (n1 % 10) + '0';
+		(*str)[i] = (n1 % 10) + '0';
 		n1 = n1 / 10;
 	}
 	if (n < 0)
-		str[0] = '-';
-	return (str);
+		(*str)[0] = '-';
 }
 
-char	*ft_itoaun(unsigned int n)
+void	ft_itoa_unsign(unsigned int n, char **str)
 {
-	char		*str;
 	unsigned int	n1;
 	size_t		i;
 
 	i = 0; 
 	n1 = n;
-	str = NULL; 
+	*str = NULL; 
 	while (n1 != 0)
 	{
 		n1 = n1 / 10;
 		i++;
 	}
 	n1 = n;
-	str = (char *)malloc((i + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	str[i] = '\0';
-	return (ft_toaun(i, n1, n, str));
+	*str = (char *)malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return ;
+	(*str)[i] = '\0';
+	ft_to_itoa_unsign(i, n1, n, str);
+	return;
 }

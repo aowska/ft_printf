@@ -11,51 +11,51 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*ft_nzero(char *str)
+char	**ft_nzero(char **str)
 {
-	str = (char *)malloc ((2) * sizeof(char));
-	str[0] = '0';
-	str[1] = '\0';
+	(*str)= (char *)malloc ((2) * sizeof(char));
+	(*str)[0] = '0';
+	(*str)[1] = '\0';
 	return (str);
 }
 
-char	*ft_toa(size_t i, long int n1, int n, char *str)
+void	ft_toa(size_t i, long int n1, int n, char **str)
 {
 	while (i--)
 	{
-		str[i] = (n1 % 10) + '0';
+		(*str)[i] = (n1 % 10) + '0';
 		n1 = n1 / 10;
 	}
 	if (n < 0)
-		str[0] = '-';
-	return (str);
+		(*str)[0] = '-';
 }
 
-char	*ft_itoa(int n)
+void	ft_itoa_dec(int n, char **str)
 {
-	char		*str;
+	//char		*s;
 	long int	n1;
 	size_t		i;
 
 	i = 0; 
 	n1 = n;
-	str = NULL; 
+	*str = NULL; 
 	while (n1 != 0)
 	{
 		n1 = n1 / 10;
 		i++;
 	}
 	if (n == 0)
-		return (ft_nzero(str));
+		str = ft_nzero(str);
 	n1 = n;
 	if (n < 0)
 	{
 		n1 *= -1;
 		i++;
 	}
-	str = (char *)malloc((i + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	str[i] = '\0';
-	return (ft_toa(i, n1, n, str));
+	*str = (char *)malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return ;
+	(*str)[i] = '\0';
+	ft_toa(i, n1, n, str);
+	return ;
 }

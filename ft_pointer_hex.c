@@ -11,43 +11,45 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*ft_toahex(size_t i, unsigned long long n1, char *str)
+void	ft_to_pointer_hex(size_t i, unsigned long long n1, char **str)
 {
 	while (i--)
 	{
 		if(n1 % 16 < 10)
 		{
-			str[i] = (n1 % 16 + '0');
+			(*str)[i] = (n1 % 16 + '0');
 			n1 = n1 / 16;
 		}
 		else
 		{
-			str[i] = ((n1 % 16) - 10 + 'A');
+			(*str)[i] = ((n1 % 16) - 10 + 'a');
 			n1 = n1 / 16;
 		}
 	}
-	return (str);
+	return;
 }
 
-char	*ft_pointerhex(unsigned long long n)
+void	ft_pointer_hex(unsigned long long n,char **str)
 {
-	char		*str;
+	
 	unsigned long long	n1;
 	size_t		i;
 
 	i = 0; 
 	n1 = n;
-	str = NULL; 
+	*str = NULL; 
 	while (n1 != 0)
 	{
 		n1 = n1 / 16;
 		i++;
 	}
 	n1 = n;
-	str = (char *)malloc((i + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	str[i] = '\0';
-	return (ft_toahex(i, n1, str));
+	*str = (char *)malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return ;
+	ft_putchar_fd('0', 1);
+	ft_putchar_fd('x', 1);
+	(*str)[i] = '\0';
+	ft_to_pointer_hex(i, n1, str);
 }
 

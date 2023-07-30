@@ -1,125 +1,87 @@
-#include "ft_printf.h"
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: awacowsk <awacowsk@student.42berlin.d      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/30 23:32:40 by awacowsk          #+#    #+#             */
+/*   Updated: 2023/07/30 23:32:42 by awacowsk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_printf(const char *word, ...)
+#include "ft_printf.h"
+//#include <stdio.h>
+
+void	get_value(const char *word, va_list pw, char **v)
+{
+	if(*word == 'c')
+		ft_char(va_arg(pw, int ), v);
+	if(*word == 's')
+		ft_string(va_arg(pw, char *), v);
+	if(*word == 'X')
+		ft_upper_hex(va_arg(pw, unsigned long long), v);
+	if(*word == 'i' || *word == 'd' )
+		ft_itoa_dec(va_arg(pw, int), v);
+	if(*word == 'x')
+		ft_lower_hex(va_arg(pw, unsigned long long), v);
+	if(*word == 'p')
+		ft_pointer_hex(va_arg(pw, unsigned long long), v);
+	if(*word == '%')
+		ft_char('%', v);
+	if(*word == 'u')
+		ft_itoa_unsign(va_arg(pw, unsigned int), v);
+}
+
+size_t	ft_printf(const char *word, ...)
 {
 	va_list	pw;
 	va_start(pw, word);
-	int i;
-	char *value;
+	size_t	i;
+	char	*value;
 	
 	i = 0;
+	value = 0;
 	while(*word)
 	{
-		while (*word != '%' && *word)
+		if(*word != '%')
 		{
-			ft_putchar_fd(*word, 1);
-			word++;
-			i++;
+			//ft_putchar_fd(*word, 1);
+			ft_char_word(*word, &value);
 		}
-		if(!*word)
-			break;
-		word++;
-		if(*word == 'c')
+		else
 		{
 			word++;
-			ft_putchar_fd(va_arg(pw, int),1);
-			i++;
+			get_value(word, pw, &value);
+			//ft_putstr_fd(value, 1);
+			//i += ft_strlen(value);
+			//free(value);
 		}
-		if(*word == 's')
-		{
-			word++;
-			value = va_arg(pw, char *);
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-		if( *word == 'X')
-		{
-			word++;
-			value = ft_pointerhex(va_arg(pw, unsigned long long));
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-		if(*word == 'i' || *word == 'd' )
-		{
-			word++;
-			value = ft_itoa(va_arg(pw, int));
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-		if(*word == 'x')
-		{
-			word++;
-			value = ft_hexlower(va_arg(pw, unsigned long long));
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-		if(*word == 'p')
-		{
-			word++;
-			value = ft_hexlower(va_arg(pw, unsigned long long));
-			ft_putchar_fd('0', 1);
-			ft_putchar_fd('x', 1);
-			i = i + 2;
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-		if(*word == '%')
-		{
-			word++;
-			ft_putchar_fd('%',1);
-			i++;
-		}
-		if(*word == 'u')
-		{
-			word++;
-			value = ft_itoaun(va_arg(pw, unsigned int));
-			while (*value)
-			{
-				ft_putchar_fd(*value, 1);
-				i++;
-				value++;
-			}
-		}
-				
+		ft_putstr_fd(value, 1);
+		i += ft_strlen(value);
+		free(value);
+		word++;	
 	}	
 	return(i);
+	
 } 
 
-int main ()
+/*int main ()
 {
-	char * a = "alalal";
-	char *value = &a;
-	ft_printf("alalla %c %s %p\n", 's', "alalal", value );
-	ft_printf("alalla %s \n", "lallala");
-	printf("alalla %c %s %p\n", 's', "alalal", value );
-	ft_printf(" %p %p ", 0, 0);
-	printf(" %p %p ", 0, 0);
+	char *a = "11111";
+	char *value = a;
+	//ft_printf("alalla %c %s %p\n", 's', "alalal", value );
+	//ft_printf("alalla %s \n", "lallala");
+	//printf("alalla %c %s %p\n", 's', "alalal", value );
+	//ft_printf(" %p %p ", 0, 0);
+	//printf(" %p %p ", 0, 0);
 	//ft_printf(" NULL %s NULL ", NULL);
 	//printf(" NULL %s NULL ", NULL);
+	//ft_printf("%c", '0');
+	//printf("%c", '0');
 	
-	//ft_printf("alalla %p \0", value);
-	//ft_printf("alalla %i \0", 5);
+	//ft_printf("alalla %s \0", a );
+	//ft_printf("alalla %c \0", 'd');
 	//ft_printf("alalla %x \0", 3645);
 	//ft_printf("alalla %X \0", 25375);
 	//ft_printf("alalla %% \0");
@@ -127,6 +89,6 @@ int main ()
 	//ft_printf("alalla %u \0", 126476543);
 	
 	return(0);
-} 
-
+}
+*/
 
