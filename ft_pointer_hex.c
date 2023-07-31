@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include <stdio.h>
 
 void	ft_to_pointer_hex(size_t i, unsigned long long n1, char **str)
 {
-	while (i--)
+	while (i-- >= 2)
 	{
 		if(n1 % 16 < 10)
 		{
@@ -26,10 +27,12 @@ void	ft_to_pointer_hex(size_t i, unsigned long long n1, char **str)
 			n1 = n1 / 16;
 		}
 	}
+	(*str)[1] ='x';
+	(*str)[0] = '0';
 	return;
 }
 
-void	ft_pointer_hex(unsigned long long n,char **str)
+void	ft_pointer_hex(unsigned long long n, char **str)
 {
 	
 	unsigned long long	n1;
@@ -37,18 +40,26 @@ void	ft_pointer_hex(unsigned long long n,char **str)
 
 	i = 0; 
 	n1 = n;
-	*str = NULL; 
+	if(n == 0)
+	{
+		//*str = (char *)malloc((6+1) * sizeof(char));
+		//if (!*str)
+			//return ;
+		*str = ft_strdup("(nil)");
+		if (!*str)
+			return;	
+		return;
+	}
 	while (n1 != 0)
 	{
 		n1 = n1 / 16;
 		i++;
 	}
+	i = i + 2;
 	n1 = n;
 	*str = (char *)malloc((i + 1) * sizeof(char));
 	if (!*str)
 		return ;
-	ft_putchar_fd('0', 1);
-	ft_putchar_fd('x', 1);
 	(*str)[i] = '\0';
 	ft_to_pointer_hex(i, n1, str);
 }

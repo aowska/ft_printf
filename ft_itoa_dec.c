@@ -11,13 +11,6 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	**ft_nzero(char **str)
-{
-	(*str)= (char *)malloc ((2) * sizeof(char));
-	(*str)[0] = '0';
-	(*str)[1] = '\0';
-	return (str);
-}
 
 void	ft_toa(size_t i, long int n1, int n, char **str)
 {
@@ -32,7 +25,6 @@ void	ft_toa(size_t i, long int n1, int n, char **str)
 
 void	ft_itoa_dec(int n, char **str)
 {
-	//char		*s;
 	long int	n1;
 	size_t		i;
 
@@ -45,7 +37,10 @@ void	ft_itoa_dec(int n, char **str)
 		i++;
 	}
 	if (n == 0)
-		str = ft_nzero(str);
+	{
+		*str = ft_strdup("0");
+		return ;
+	}
 	n1 = n;
 	if (n < 0)
 	{

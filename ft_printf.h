@@ -28,6 +28,7 @@ void	ft_char(int a, char **str);
 void	ft_char_word(int a, char **str);
 void	ft_string(char *src, char **ptr);
 void	ft_putstr_fd(char *s, int fd);
+char	*ft_strdup(char *src);
 size_t	ft_printf(const char *word, ...);
 
 

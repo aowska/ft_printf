@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//#include <stdio.h>
+#include <stdio.h>
 
 void	get_value(const char *word, va_list pw, char **v)
 {
@@ -65,18 +65,18 @@ size_t	ft_printf(const char *word, ...)
 	return(i);
 	
 } 
-
-/*int main ()
+/*
+int main ()
 {
-	char *a = "11111";
-	char *value = a;
+	//char *a = "11111";
+	//char *value = a;
 	//ft_printf("alalla %c %s %p\n", 's', "alalal", value );
 	//ft_printf("alalla %s \n", "lallala");
 	//printf("alalla %c %s %p\n", 's', "alalal", value );
 	//ft_printf(" %p %p ", 0, 0);
 	//printf(" %p %p ", 0, 0);
-	//ft_printf(" NULL %s NULL ", NULL);
-	//printf(" NULL %s NULL ", NULL);
+	ft_printf(" NULL %s NULL \n", NULL);
+	printf(" NULL %s NULL \n", NULL);
 	//ft_printf("%c", '0');
 	//printf("%c", '0');
 	
@@ -85,10 +85,39 @@ size_t	ft_printf(const char *word, ...)
 	//ft_printf("alalla %x \0", 3645);
 	//ft_printf("alalla %X \0", 25375);
 	//ft_printf("alalla %% \0");
+	//printf(" %c %c %c ", '0', '0', 0);
+	//ft_printf(" NULL %s NULL ", NULL);
+	//printf(" %c %c %c ", '0', 0, '1');
 	//ft_printf("alalla %d \0", 1264);
 	//ft_printf("alalla %u \0", 126476543);
+	//printf("%d", printf("%s", "\0"));
+	printf("%zu\n",ft_printf(" %c %c %c \n", '0', 0, '1'));
+	printf("%zu\n",ft_printf(" %c %c %c \n", '2', '1', 0));
+	printf("%zu\n",ft_printf(" %c %c %c \n", 0, '1', '2'));
+	printf("%d\n",printf(" %c %c %c \n", '0', 0, '1'));
+	printf("%d\n",printf(" %c %c %c \n", '2', '1', 0));
+	printf("%d\n",printf(" %c %c %c \n", 0, '1', '2'));
+printf("%d\n",printf(" %p ", -1));
+printf("%d\n",printf(" %p ", 1));
+printf(" %p ", 15);
+printf(" %p ", 16);
+printf(" %p \n", 17);
+printf("%zu\n",ft_printf(" %p ", -1));
+printf("%zu\n",ft_printf(" %p ", 1));
+ft_printf(" %p ", 15);
+ft_printf(" %p ", 16);
+ft_printf(" %p \n", 17);
+ft_printf(" %p %p ", 0, 0);
+printf("%d\n",ft_printf(" %p %p ", 0, 0));
+printf(" %p %p ", 0, 0);
+printf("%d",printf(" %p %p ", 0, 0));
+
+printf(" %x \n", 0);
+ft_printf(" %x \n", 0);
+
+
 	
 	return(0);
-}
+} 
 */
 

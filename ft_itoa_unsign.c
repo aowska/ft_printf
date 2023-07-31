@@ -26,11 +26,18 @@ void	ft_to_itoa_unsign(size_t i,  unsigned int n1, unsigned int n, char **str)
 void	ft_itoa_unsign(unsigned int n, char **str)
 {
 	unsigned int	n1;
-	size_t		i;
+	unsigned int	i;
 
 	i = 0; 
 	n1 = n;
-	*str = NULL; 
+	if(n == 0)
+	{
+		*str = (char *)malloc((6+1) * sizeof(char));
+		if (!*str)
+			return ;
+		*str = ft_strdup("0");
+		return;	
+	}
 	while (n1 != 0)
 	{
 		n1 = n1 / 10;

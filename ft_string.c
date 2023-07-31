@@ -19,16 +19,26 @@ void ft_string(char *src, char **ptr)
 
 	i = 0;
 	j = 0;
-	i = ft_strlen(src);
-	*ptr = (char *)malloc ((i + 1) * sizeof(char));
-	if (!*ptr)
-		return ;
-	while (src[j])
+	if (!src)
 	{
-		(*ptr)[j] = src[j];
-		j++;
+		//*ptr = (char *)malloc ((6 + 1) * sizeof(char));
+		*ptr = ft_strdup("(null)");
+		if (!*ptr)
+			return ;
 	}
-	(*ptr)[j] = '\0';
-	return ;
+	else
+	{
+		i = ft_strlen(src);
+		*ptr = (char *)malloc ((i + 1) * sizeof(char));
+		if (!*ptr)
+			return ;
+		while (src[j])
+		{
+			(*ptr)[j] = src[j];
+			j++;
+		}
+		(*ptr)[j] = '\0';
+		return ;
+	}
 }
 
