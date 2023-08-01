@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void ft_string(char *src, char **ptr)
+void	ft_string(char *src, char **ptr)
 {
 	int		i;
 	int		j;
@@ -21,7 +21,6 @@ void ft_string(char *src, char **ptr)
 	j = 0;
 	if (!src)
 	{
-		//*ptr = (char *)malloc ((6 + 1) * sizeof(char));
 		*ptr = ft_strdup("(null)");
 		if (!*ptr)
 			return ;
@@ -41,4 +40,3 @@ void ft_string(char *src, char **ptr)
 		return ;
 	}
 }
-

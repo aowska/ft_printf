@@ -12,8 +12,18 @@
 
 #include "ft_printf.h"
 
-void	ft_to_itoa_unsign(size_t i,  unsigned int n1, unsigned int n, char **str)
+void	ft_to_itoa_unsign(size_t i, unsigned int n1, 
+		unsigned int n, char **str)
 {
+	if (n == 0)
+	{
+		*str = ft_strdup("0");
+		return ;
+	}
+	*str = (char *)malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return ;
+	(*str)[i] = '\0';
 	while (i--)
 	{
 		(*str)[i] = (n1 % 10) + '0';
@@ -30,24 +40,12 @@ void	ft_itoa_unsign(unsigned int n, char **str)
 
 	i = 0; 
 	n1 = n;
-	if(n == 0)
-	{
-		*str = (char *)malloc((6+1) * sizeof(char));
-		if (!*str)
-			return ;
-		*str = ft_strdup("0");
-		return;	
-	}
 	while (n1 != 0)
 	{
 		n1 = n1 / 10;
 		i++;
 	}
 	n1 = n;
-	*str = (char *)malloc((i + 1) * sizeof(char));
-	if (!*str)
-		return ;
-	(*str)[i] = '\0';
 	ft_to_itoa_unsign(i, n1, n, str);
-	return;
+	return ;
 }

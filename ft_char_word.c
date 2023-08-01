@@ -12,15 +12,15 @@
 
 #include "ft_printf.h"
 
-void ft_char_word(int c, char **str)
+void	ft_char_word(int c, char **str)
 {
 	*str = (char *)malloc((2) * sizeof(char));
 	if (!*str)
-		return;
+		return ;
 	else
 	{
 		(*str)[0] = c;
 		(*str)[1] = '\0';
 	}
-	return;
+	return ;
 }

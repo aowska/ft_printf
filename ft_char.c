@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void ft_char(int c, char **str)
+void	ft_char(int c, char **str)
 {
-	*str = (char *)malloc((2) * sizeof(char));
-	if (!*str)
-		return;
+	
+	if (c == 0) 
+		ft_putchar_fd(c, 1);
 	else
 	{
+		*str = (char *)malloc((2) * sizeof(char));
+		if (!*str)
+		return ;
 		(*str)[0] = c;
 		(*str)[1] = '\0';
 	}
-	return;
+	return ;
 }

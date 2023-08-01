@@ -11,9 +11,17 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-
 void	ft_toa(size_t i, long int n1, int n, char **str)
 {
+	if (n == 0)
+	{
+		*str = ft_strdup("0");
+		return ;
+	}
+	*str = (char *)malloc((i + 1) * sizeof(char));
+	if (!*str)
+		return ;
+	(*str)[i] = '\0';
 	while (i--)
 	{
 		(*str)[i] = (n1 % 10) + '0';
@@ -36,21 +44,12 @@ void	ft_itoa_dec(int n, char **str)
 		n1 = n1 / 10;
 		i++;
 	}
-	if (n == 0)
-	{
-		*str = ft_strdup("0");
-		return ;
-	}
 	n1 = n;
 	if (n < 0)
 	{
 		n1 *= -1;
 		i++;
 	}
-	*str = (char *)malloc((i + 1) * sizeof(char));
-	if (!*str)
-		return ;
-	(*str)[i] = '\0';
 	ft_toa(i, n1, n, str);
 	return ;
 }
