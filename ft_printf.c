@@ -16,7 +16,7 @@
 void	get_value(const char *word, va_list pw, char **v)
 {
 	if (*word == 'c' )
-		ft_char(va_arg(pw, int), v);
+		ft_char(va_arg(pw, int));
 	if (*word == 's')
 		ft_string(va_arg(pw, char *), v);
 	if (*word == 'X')
@@ -28,12 +28,12 @@ void	get_value(const char *word, va_list pw, char **v)
 	if (*word == 'p')
 		ft_pointer_hex(va_arg(pw, unsigned long long), v);
 	if (*word == '%')
-		ft_char('%', v);
+		ft_char_procent('%', v);
 	if (*word == 'u')
 		ft_itoa_unsign(va_arg(pw, unsigned int), v);
 }
 
-size_t	ft_printf(const char *word, ...)
+int	ft_printf(const char *word, ...)
 {
 	size_t	i;
 	char	*value;
@@ -47,12 +47,8 @@ size_t	ft_printf(const char *word, ...)
 		if (*word != '%')
 			ft_char_word(*word, &value);
 		else
-		{
-			word++;
-			get_value(word, pw, &value);
-		}
-		
-		if (!*value && *(word) == 'c')
+			get_value(++word, pw, &value);
+		if (*(word) == 'c')
 			i++;
 		else
 		{
@@ -62,10 +58,11 @@ size_t	ft_printf(const char *word, ...)
 		}
 		word++;
 	}
+	va_end(pw);
 	return (i);
 }
 
-int main ()
+/*int main ()
 {
 	//long LONG_MAX = 9223372036854775807;
 	//char *a = "11111";
@@ -99,7 +96,7 @@ int main ()
 	printf("%d\n",printf(" %c %c %c \n", 0, '1', '2'));
 	//printf("%d\n",printf(" %p ", -1));
 	//printf("%d\n",printf(" %p ", 1));
-/*	printf(" %p ", 15);
+	printf(" %p ", 15);
 	printf(" %p ", 16);
 	printf(" %p \n", 17);
 	printf("%zu\n",ft_printf(" %p ", -1));
@@ -119,7 +116,7 @@ int main ()
 	ft_printf("LONG_MAX( d) = %d\n",LONG_MAX);
 	ft_printf("LONG_MAX( X) = %X\n",LONG_MAX);
 	ft_printf("LONG_MAX(lu) = %u\n",LONG_MAX);
-	printf("%zu\n", sizeof(unsigned long long));*/
+	printf("%zu\n", sizeof(unsigned long long));
 	return(0);
 } 
-
+*/

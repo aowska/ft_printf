@@ -24,11 +24,12 @@ void	ft_lower_hex(unsigned int n, char **str);
 void	ft_pointer_hex(unsigned long long n, char **str);
 void	ft_upper_hex(unsigned int n, char **str);
 void	ft_itoa_unsign(unsigned int n, char **str);
-void	ft_char(int a, char **str);
+void	ft_char(int a);
 void	ft_char_word(int a, char **str);
 void	ft_string(char *src, char **ptr);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(char *src);
-size_t	ft_printf(const char *word, ...);
+void	ft_char_procent(int c, char **str);
+int		ft_printf(const char *word, ...);
 
 #endif
