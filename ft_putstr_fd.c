@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, size_t *b, int fd)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
 		return ;
+	*b += ft_strlen(s);
 	while (s[i])
 	{
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
+	free(s);
 }

@@ -27,7 +27,7 @@ void	ft_itoa_unsign(unsigned int n, char **str);
 void	ft_char(int a);
 void	ft_char_word(int a, char **str);
 void	ft_string(char *src, char **ptr);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putstr_fd(char *s, size_t *b, int fd);
 char	*ft_strdup(char *src);
 void	ft_char_procent(int c, char **str);
 int		ft_printf(const char *word, ...);

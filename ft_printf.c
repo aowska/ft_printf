@@ -39,6 +39,8 @@ int	ft_printf(const char *word, ...)
 	char	*value;
 	va_list	pw;
 
+	if (!word)
+		return (-1);
 	va_start(pw, word);
 	i = 0;
 	value = 0;
@@ -51,15 +53,10 @@ int	ft_printf(const char *word, ...)
 		if (*(word) == 'c')
 			i++;
 		else
-		{
-			ft_putstr_fd(value, 1);
-			i += ft_strlen(value);
-			free(value);
-		}
+			ft_putstr_fd(value, &i, 1);
 		word++;
 	}
-	va_end(pw);
-	return (i);
+	return (va_end(pw), i);
 }
 
 /*int main ()
