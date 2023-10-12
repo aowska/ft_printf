@@ -61,59 +61,66 @@ int	ft_printf(const char *word, ...)
 
 /*int main ()
 {
-	//long LONG_MAX = 9223372036854775807;
-	//char *a = "11111";
-	//char *value = a;
-	//ft_printf("alalla %c %s %p\n", 's', "alalal", value );
-	//ft_printf("alalla %s \n", "lallala");
-	//printf("alalla %c %s %p\n", 's', "alalal", value );
-	//ft_printf(" %p %p ", 0, 0);
-	//printf(" %p %p ", 0, 0);
-	//ft_printf(" NULL %s NULL \n", NULL);
-	//printf(" NULL %s NULL \n", NULL);
-	//ft_printf("%c", '0');
-	//printf("%c", '0');
+	char	ch = 'c';
+	char	str[] = "Hello, user!";
+	char	*ptr;
+	int		int1 = -1234565;
+	int		int2 = -3934555;
+	unsigned int	uns = -2147483648;
+	unsigned int	hex_low = -1233454;
+	unsigned int	hex_up = -1233454;
+	int	result;
+
+	ptr = &ch;
+	printf("\n\nStandard PRINTF function:\n");
+	result = printf("%c", ch);
+	printf("\t\t- character, return value 'c': %d\n", result);
+	result = printf("%s", str);
+	printf("\t- string, return value 's': %d\n", result);
+	result = printf("%d", int1);
+	printf("\t- int, decimal, return value 'd': %d\n", result);
+	result = printf("%i", int2);
+	printf("\t- int, whole number, decimal, return value 'i': %d\n", result);
+	result = printf("%u", uns);
+	printf("\t- unsigned int, decimal, return value 'u': %d\n", result);
+	result = printf("%p", ptr);
+	printf("\t- address, return value 'p': %d\n", result);
+	result = printf("%x", hex_low);
+	printf("\t- unsigned int, hex, lowercase, return value 'x': %d\n", result);
+	result = printf("%X", hex_up);
+	printf("\t- unsigned int, hex, uppercase, return value 'X': %d\n", result);
+	result = printf("%%");
+	printf("\t\t- percent sign, return value: %d\n", result);
+
+	ft_printf("\n\nMy FT_PRINTF function:\n");
+	result = ft_printf("%c", ch);
+	printf("\t\t- character, return value 'c': %d\n", result);
+	result = ft_printf("%s", str);
+	printf("\t- string, return value 's': %d\n", result);
+	result = ft_printf("%d", int1);
+	printf("\t- int, decimal, return value 'd': %d\n", result);
+	result = ft_printf("%i", int2);
+	printf("\t- int, whole number, decimal, return value 'i': %d\n", result);
+	result = ft_printf("%u", uns);
+	printf("\t- unsigned int, decimal, return value 'u': %d\n", result);
+	result = ft_printf("%p", ptr);
+	printf("\t- address, return value 'p': %d\n", result);
+	result = ft_printf("%x", hex_low);
+	printf("\t- unsigned int, hex, lowercase, return value 'x': %d\n", result);
+	result = ft_printf("%X", hex_up);
+	printf("\t- unsigned int, hex, uppercase, return value 'X': %d\n", result);
+	result = ft_printf("%%");
+	printf("\t\t- percent sign, return value: %d\n\n", result);
+
 	
-	//ft_printf("alalla %s \0", a );
-	//ft_printf("alalla %c \0", 'd');
-	//ft_printf("alalla %x \0", 3645);
-	//ft_printf("alalla %X \0", 25375);
-	//ft_printf("alalla %% \0");
-	//printf(" %c %c %c ", '0', '0', 0);
-	//ft_printf(" NULL %s NULL ", NULL);
-	//printf(" %c %c %c ", '0', 0, '1');
-	//ft_printf("alalla %d \0", 1264);
-	//ft_printf("alalla %u \0", 126476543);
-	//printf("%d", printf("%s", "\0"));
-	printf("%zu\n",ft_printf(" %c %c %c \n", '0', 0, '1'));
-	printf("%zu\n",ft_printf(" %c %c %c \n", '2', '1', 0));
-	printf("%zu\n",ft_printf(" %c %c %c \n", 0, '1', '2'));
-	printf("%d\n",printf(" %c %c %c \n", '0', 0, '1'));
-	printf("%d\n",printf(" %c %c %c \n", '2', '1', 0));
-	printf("%d\n",printf(" %c %c %c \n", 0, '1', '2'));
-	//printf("%d\n",printf(" %p ", -1));
-	//printf("%d\n",printf(" %p ", 1));
-	printf(" %p ", 15);
-	printf(" %p ", 16);
-	printf(" %p \n", 17);
-	printf("%zu\n",ft_printf(" %p ", -1));
-	printf("%zu\n",ft_printf(" %p ", 1));
-	ft_printf(" %p ", 15);
-	ft_printf(" %p ", 16);
-	ft_printf(" %p \n", 17);
-	ft_printf(" %p %p ", 0, 0);
-	printf("%d\n",ft_printf(" %p %p ", 0, 0));
-	printf(" %p %p ", 0, 0);
-	printf("%d",printf(" %p %p ", 0, 0));
-	printf(" %x \n", 0);
-	ft_printf(" %x \n", 0);
-	printf("LONG_MAX( d) = %d\n",LONG_MAX);
-	printf("LONG_MAX( X) = %X\n",LONG_MAX);
-	printf("LONG_MAX(lu) = %u\n",LONG_MAX);
-	ft_printf("LONG_MAX( d) = %d\n",LONG_MAX);
-	ft_printf("LONG_MAX( X) = %X\n",LONG_MAX);
-	ft_printf("LONG_MAX(lu) = %u\n",LONG_MAX);
-	printf("%zu\n", sizeof(unsigned long long));
-	return(0);
-} 
-*/
+	int len1 = ft_printf(NULL);
+	ft_printf("%d\n", len1);
+	int len2 = printf(NULL);
+	printf("%d\n", len2);
+	int len3 = ft_printf("");
+	ft_printf("%d\n", len3);
+	int len4 = printf("");
+	printf("%d\n", len4);
+	return 0;
+	
+} */
