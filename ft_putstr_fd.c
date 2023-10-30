@@ -24,5 +24,4 @@ void	ft_putstr_fd(char *s, size_t *b, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	free(s);
 }

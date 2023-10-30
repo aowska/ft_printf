@@ -24,7 +24,7 @@ void	ft_lower_hex(unsigned int n, char **str);
 void	ft_pointer_hex(unsigned long long n, char **str);
 void	ft_upper_hex(unsigned int n, char **str);
 void	ft_itoa_unsign(unsigned int n, char **str);
-void	ft_char(int a);
+void	ft_char(int a, char **str);
 void	ft_char_word(int a, char **str);
 void	ft_string(char *src, char **ptr);
 void	ft_putstr_fd(char *s, size_t *b, int fd);

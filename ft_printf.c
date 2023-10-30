@@ -16,7 +16,7 @@
 void	get_value(const char *word, va_list pw, char **v)
 {
 	if (*word == 'c' )
-		ft_char(va_arg(pw, int));
+		ft_char(va_arg(pw, int), v);
 	if (*word == 's')
 		ft_string(va_arg(pw, char *), v);
 	if (*word == 'X')
@@ -55,6 +55,7 @@ int	ft_printf(const char *word, ...)
 		else
 			ft_putstr_fd(value, &i, 1);
 		word++;
+		free(value);
 	}
 	return (va_end(pw), i);
 }

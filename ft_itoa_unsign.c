@@ -29,8 +29,6 @@ void	ft_to_itoa_unsign(size_t i, unsigned int n1,
 		(*str)[i] = (n1 % 10) + '0';
 		n1 = n1 / 10;
 	}
-	if (n < 0)
-		(*str)[0] = '-';
 }
 
 void	ft_itoa_unsign(unsigned int n, char **str)
