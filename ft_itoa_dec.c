@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_toa(size_t i, long int n1, int n, char **str)
+void	ft_toa(size_t i, long int n1, long int n, char **str)
 {
 	if (n == 0)
 	{
@@ -31,14 +31,14 @@ void	ft_toa(size_t i, long int n1, int n, char **str)
 		(*str)[0] = '-';
 }
 
-void	ft_itoa_dec(int n, char **str)
+void	ft_itoa_dec(long int n, char **str)
 {
 	long int	n1;
 	size_t		i;
 
-	i = 0; 
+	i = 0;
 	n1 = n;
-	*str = NULL; 
+	*str = NULL;
 	while (n1 != 0)
 	{
 		n1 = n1 / 10;

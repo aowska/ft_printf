@@ -39,7 +39,7 @@ void	ft_lower_hex(unsigned int n, char **str)
 	unsigned int	n1;
 	size_t			i;
 
-	i = 0; 
+	i = 0;
 	n1 = n;
 	while (n1 != 0)
 	{

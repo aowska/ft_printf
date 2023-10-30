@@ -13,24 +13,24 @@
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	get_value(const char *word, va_list pw, char **v)
+void	get_value(const char *word, va_list *pw, char **v)
 {
 	if (*word == 'c' )
-		ft_char(va_arg(pw, int), v);
-	if (*word == 's')
-		ft_string(va_arg(pw, char *), v);
-	if (*word == 'X')
-		ft_upper_hex(va_arg(pw, unsigned int), v);
-	if (*word == 'i' || *word == 'd' )
-		ft_itoa_dec(va_arg(pw, int), v);
-	if (*word == 'x')
-		ft_lower_hex(va_arg(pw, unsigned int), v);
-	if (*word == 'p')
-		ft_pointer_hex(va_arg(pw, unsigned long long), v);
-	if (*word == '%')
+		ft_char(va_arg(*pw, int), v);
+	else if (*word == 's')
+		ft_string(va_arg(*pw, char *), v);
+	else if (*word == 'X')
+		ft_upper_hex(va_arg(*pw, unsigned int), v);
+	else if (*word == 'i' || *word == 'd' )
+		ft_itoa_dec(va_arg(*pw, int), v);
+	else if (*word == 'x')
+		ft_lower_hex(va_arg(*pw, unsigned int), v);
+	else if (*word == 'p')
+		ft_pointer_hex(va_arg(*pw, unsigned long long), v);
+	else if (*word == '%')
 		ft_char_procent('%', v);
-	if (*word == 'u')
-		ft_itoa_unsign(va_arg(pw, unsigned int), v);
+	else if (*word == 'u')
+		ft_itoa_unsign(va_arg(*pw, unsigned int), v);
 }
 
 int	ft_printf(const char *word, ...)
@@ -49,18 +49,19 @@ int	ft_printf(const char *word, ...)
 		if (*word != '%')
 			ft_char_word(*word, &value);
 		else
-			get_value(++word, pw, &value);
-		if (*(word) == 'c')
-			i++;
-		else
-			ft_putstr_fd(value, &i, 1);
+		{
+			get_value(++word, &pw, &value);
+			if (*(word) == 'c')
+				i++;
+		}
+		ft_putstr_fd(value, &i, 1);
 		word++;
 		free(value);
 	}
 	return (va_end(pw), i);
 }
 
-/*int main ()
+int main ()
 {
 	char	ch = 'c';
 	char	str[] = "Hello, user!";
@@ -114,14 +115,14 @@ int	ft_printf(const char *word, ...)
 	printf("\t\t- percent sign, return value: %d\n\n", result);
 
 	
-	int len1 = ft_printf(NULL);
-	ft_printf("%d\n", len1);
-	int len2 = printf(NULL);
-	printf("%d\n", len2);
+	//int len1 = ft_printf(NULL);
+	//ft_printf("%d\n", len1);
+	//int len2 = printf(NULL);
+	//printf("%d\n", len2);
 	int len3 = ft_printf("");
 	ft_printf("%d\n", len3);
 	int len4 = printf("");
 	printf("%d\n", len4);
 	return 0;
 	
-} */
+} 

@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_to_itoa_unsign(size_t i, unsigned int n1, 
+void	ft_to_itoa_unsign(size_t i, unsigned int n1,
 		unsigned int n, char **str)
 {
 	if (n == 0)
@@ -36,7 +36,7 @@ void	ft_itoa_unsign(unsigned int n, char **str)
 	unsigned int	n1;
 	unsigned int	i;
 
-	i = 0; 
+	i = 0;
 	n1 = n;
 	while (n1 != 0)
 	{

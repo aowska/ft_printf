@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_to_pointer_hex(size_t i, unsigned long long n1, char **str)
+void	ft_to_pointer_hex(size_t i, unsigned long int n1, char **str)
 {
 	if (n1 == 0)
 	{
@@ -37,16 +37,16 @@ void	ft_to_pointer_hex(size_t i, unsigned long long n1, char **str)
 	return ;
 }
 
-void	ft_pointer_hex(unsigned long long n, char **str)
+void	ft_pointer_hex(unsigned long int n, char **str)
 {
-	unsigned long long	n1;
+	unsigned long int	n1;
 	size_t				i;
 
-	i = 0; 
+	i = 0;
 	n1 = n;
 	if (n == 0)
 	{
-		*str = ft_strdup("(nil)");
+		*str = ft_strdup("0x0");
 		if (!*str)
 			return ;
 		return ;

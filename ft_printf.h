@@ -19,9 +19,9 @@
 
 size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char s, int fd);
-void	ft_itoa_dec(int n, char **str);
+void	ft_itoa_dec(long int n, char **str);
 void	ft_lower_hex(unsigned int n, char **str);
-void	ft_pointer_hex(unsigned long long n, char **str);
+void	ft_pointer_hex(unsigned long int n, char **str);
 void	ft_upper_hex(unsigned int n, char **str);
 void	ft_itoa_unsign(unsigned int n, char **str);
 void	ft_char(int a, char **str);
