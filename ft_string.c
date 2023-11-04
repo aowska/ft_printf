@@ -14,8 +14,8 @@
 
 void	ft_string(char *src, char **ptr)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
